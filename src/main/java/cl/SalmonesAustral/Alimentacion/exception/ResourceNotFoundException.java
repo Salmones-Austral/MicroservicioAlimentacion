@@ -1,4 +1,4 @@
-package cl.AlmonesAustral.Alimentacion.exception;
+package cl.SalmonesAustral.Alimentacion.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String mensaje) {

@@ -1,4 +1,4 @@
-package cl.AlmonesAustral.Alimentacion.config;
+package cl.SalmonesAustral.Alimentacion.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package cl.AlmonesAustral.Alimentacion.model;
+package cl.SalmonesAustral.Alimentacion.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,9 +17,6 @@ public class Alimentacion {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "idAlimentacion", nullable = false, length = 20)
-    private int idAlimentacion;
-
     @Column(name = "tipoAlimentacion", nullable = false, length = 50)
     private String tipoAlimentacion;
 
@@ -37,23 +34,13 @@ public class Alimentacion {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdAlimentacion() {
-        return idAlimentacion;
-    }
-
-    public void setIdAlimentacion(int idAlimentacion) {
-        this.idAlimentacion = idAlimentacion;
     }
 
     public String getTipoAlimentacion() {
         return tipoAlimentacion;
     }
-
     public void setTipoAlimentacion(String tipoAlimentacion) {
         this.tipoAlimentacion = tipoAlimentacion;
     }
@@ -61,7 +48,6 @@ public class Alimentacion {
     public String getCantidadAlimentacion() {
         return cantidadAlimentacion;
     }
-
     public void setCantidadAlimentacion(String cantidadAlimentacion) {
         this.cantidadAlimentacion = cantidadAlimentacion;
     }
@@ -69,7 +55,6 @@ public class Alimentacion {
     public int getVecesAlimentados() {
         return vecesAlimentados;
     }
-
     public void setVecesAlimentados(int vecesAlimentados) {
         this.vecesAlimentados = vecesAlimentados;
     }
@@ -77,7 +62,6 @@ public class Alimentacion {
     public String getRecepcionAlertaAlgas() {
         return recepcionAlertaAlgas;
     }
-
     public void setRecepcionAlertaAlgas(String recepcionAlertaAlgas) {
         this.recepcionAlertaAlgas = recepcionAlertaAlgas;
     }

@@ -1,4 +1,4 @@
-package cl.AlmonesAustral.Alimentacion;
+package cl.SalmonesAustral.Alimentacion;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

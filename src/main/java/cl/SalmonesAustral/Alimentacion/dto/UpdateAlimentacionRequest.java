@@ -1,4 +1,4 @@
-package cl.AlmonesAustral.Alimentacion.dto;
+package cl.SalmonesAustral.Alimentacion.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;

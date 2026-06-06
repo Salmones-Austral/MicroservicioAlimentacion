@@ -1,4 +1,4 @@
-package cl.AlmonesAustral.Alimentacion.exception;
+package cl.SalmonesAustral.Alimentacion.exception;
 
 import java.time.Instant;
 import java.util.Map;

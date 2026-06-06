@@ -1,13 +1,13 @@
-package cl.AlmonesAustral.Alimentacion.service;
+package cl.SalmonesAustral.Alimentacion.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.AlmonesAustral.Alimentacion.model.Alimentacion;
-import cl.AlmonesAustral.Alimentacion.repository.AlimentacionRepository;
-import cl.AlmonesAustral.Alimentacion.exception.ResourceNotFoundException;
+import cl.SalmonesAustral.Alimentacion.exception.ResourceNotFoundException;
+import cl.SalmonesAustral.Alimentacion.model.Alimentacion;
+import cl.SalmonesAustral.Alimentacion.repository.AlimentacionRepository;
 
 @Service
 public class AlimentacionService {
