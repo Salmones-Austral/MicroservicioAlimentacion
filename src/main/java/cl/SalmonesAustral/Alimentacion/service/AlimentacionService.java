@@ -19,7 +19,8 @@ public class AlimentacionService {
     }
     //obtener id
     public Alimentacion getIdAlimentacion(int id) {
-        return alimentacionRepository.findById(id).orElse(null);
+        return alimentacionRepository.findById(id).
+        orElseThrow(() -> new ResourceNotFoundException("El personal no existe con id: " + id));
     }
     //guardar
     public Alimentacion setAlimentacion(Alimentacion alimentacion) {
@@ -34,6 +35,9 @@ public class AlimentacionService {
     }
     //eliminar
     public void deleteIdAlimentacion(int id) {
+        if(!alimentacionRepository.existsById(id)){
+            throw new ResourceNotFoundException("Alimentacion no existe con id: " + id);
+        }
         alimentacionRepository.deleteById(id);
     }
     

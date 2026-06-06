@@ -54,10 +54,15 @@ public class AlimentacionControllador {
         alimentacionService.deleteIdAlimentacion(id);
         return ResponseEntity.noContent().build();
     }
+    //filtrar por id
+    @GetMapping("/{id}")
+    public ResponseEntity<Alimentacion> getIdAlimentacion(@PathVariable Integer id){
+        Alimentacion alimentacion = alimentacionService.getIdAlimentacion(id);
+        return ResponseEntity.ok(alimentacion);      
+    }
     //crear
     @PostMapping
     public ResponseEntity<?> crearAlimentacion(@Valid @RequestBody CreateAlimentacionRequest createAlimentacion, BindingResult result) {
-        
         if (result.hasErrors()) {
             Map<String, String> errores = new HashMap<>();
             result.getFieldErrors().forEach(error -> 
