@@ -106,19 +106,36 @@ public class AlimentacionControllador {
     public ResponseEntity<Map<String, Object>> registrarAlimentoEnJaula(
         @PathVariable String nombre, 
         @RequestParam Double cantidadAlimento) {
-        List<Object> datosJaula = jaulaClient.obtenerJaulasPorNombre(nombre);
-        if (datosJaula == null || datosJaula.isEmpty()) {
+        List<Object> infoJaula = jaulaClient.obtenerJaulasPorNombre(nombre);
+        if (infoJaula == null || infoJaula.isEmpty()) {
             Map<String, Object> error = new HashMap<>();
             error.put("mensaje", "La jaula '" + nombre + "' no existe.");
             return ResponseEntity.status(404).body(error);
         }
-        Map<String, Object> respuestaCombinada = new HashMap<>();
-        respuestaCombinada.put("datosJaula", datosJaula.get(0)); 
-        respuestaCombinada.put("nombreBuscado", nombre);
-        respuestaCombinada.put("cantidadAlimentoAsignada", cantidadAlimento);
-        return ResponseEntity.ok(respuestaCombinada);
+        Map<String, Object> confirmacionInfo = new HashMap<>();
+        confirmacionInfo.put("id", infoJaula.get(0)); 
+        confirmacionInfo.put("nombreBuscado", nombre);
+        confirmacionInfo.put("cantidadAlimentoAsignada", cantidadAlimento);
+        return ResponseEntity.ok(confirmacionInfo);
+    }
+    //insertar datos en criadero
+    @PostMapping("/criaderos/{nombre}/alimento")
+    public ResponseEntity<Map<String, Object>> RegistrarAlimentacionEnCriadero(
+        @PathVariable String nombre,
+        @RequestParam Double cantidadAlimento,
+        @RequestParam String tipoAlimento) {
+        List<Object> infoCriadero = criaderoClient.obtenerCriaderosPorNombre(nombre);
+        if (infoCriadero == null || infoCriadero.isEmpty()){
+            Map<String, Object> error = new HashMap<>();
+            error.put("mensaje", "El Criadero '" + nombre + "' no existe.");
+            return ResponseEntity.status(404).body(error);
+        }
+        Map<String, Object> confirmarInfo = new HashMap<>();
+        confirmarInfo.put("id", infoCriadero.get(0));
+        confirmarInfo.put("criadero", nombre);
+        confirmarInfo.put("cantidad", cantidadAlimento);
+        confirmarInfo.put("tipo", tipoAlimento);
+        return ResponseEntity.ok(confirmarInfo);
     }
     
-    
-
 }
