@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import cl.AlmonesAustral.Alimentacion.model.Alimentacion;
 import cl.AlmonesAustral.Alimentacion.repository.AlimentacionRepository;
+import cl.AlmonesAustral.Alimentacion.exception.ResourceNotFoundException;
 
 @Service
 public class AlimentacionService {
@@ -16,13 +17,25 @@ public class AlimentacionService {
     public List<Alimentacion> getAllAlimentacion() {
         return alimentacionRepository.findAll();
     }
-    //obtener
+    //obtener id
     public Alimentacion getIdAlimentacion(int id) {
         return alimentacionRepository.findById(id).orElse(null);
     }
     //guardar
-    public void setIdAlimentacion(Alimentacion alimentacion) {
-        alimentacionRepository.save(alimentacion);
+    public Alimentacion setAlimentacion(Alimentacion alimentacion) {
+        return alimentacionRepository.save(alimentacion);
     }
+    //actualizar
+    public Alimentacion update(Alimentacion alimentacion) {
+        if (!alimentacionRepository.existsById(alimentacion.getId())) {
+            throw new ResourceNotFoundException("Alimentacion no existe con id: " + alimentacion.getId());
+        }
+        return alimentacionRepository.save(alimentacion);
+    }
+    //eliminar
+    public void deleteIdAlimentacion(int id) {
+        alimentacionRepository.deleteById(id);
+    }
+    
 
 }
