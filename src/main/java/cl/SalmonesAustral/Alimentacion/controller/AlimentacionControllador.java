@@ -3,8 +3,7 @@ package cl.SalmonesAustral.Alimentacion.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.SalmonesAustral.Alimentacion.client.CriaderoClient;
-import cl.SalmonesAustral.Alimentacion.client.JaulaClient;
+import cl.SalmonesAustral.Alimentacion.client.*;
 import cl.SalmonesAustral.Alimentacion.dto.*;
 import cl.SalmonesAustral.Alimentacion.mapper.AlimentacionMapper;
 import cl.SalmonesAustral.Alimentacion.model.Alimentacion;
@@ -89,7 +88,7 @@ public class AlimentacionControllador {
             return new ResponseEntity<>(errores, HttpStatus.BAD_REQUEST);
         }
         Alimentacion alimentacion = AlimentacionMapper.toAlimentacionUpdate(id, updateAlimentacion);
-        Alimentacion actualizado = alimentacionService.update(alimentacion);
+        Alimentacion actualizado = alimentacionService.updateAlimentacion(alimentacion);
 
         return ResponseEntity.ok(actualizado);
     }

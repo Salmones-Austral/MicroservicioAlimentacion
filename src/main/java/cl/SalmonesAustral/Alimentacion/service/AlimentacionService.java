@@ -12,33 +12,33 @@ import cl.SalmonesAustral.Alimentacion.repository.AlimentacionRepository;
 @Service
 public class AlimentacionService {
     @Autowired
-    private AlimentacionRepository alimentacionRepository;
+    private AlimentacionRepository alimentacionRepo;
     //todo
     public List<Alimentacion> getAllAlimentacion() {
-        return alimentacionRepository.findAll();
+        return alimentacionRepo.findAll();
     }
     //obtener id
     public Alimentacion getIdAlimentacion(int id) {
-        return alimentacionRepository.findById(id).
-        orElseThrow(() -> new ResourceNotFoundException("El personal no existe con id: " + id));
+        return alimentacionRepo.findById(id).
+        orElseThrow(() -> new ResourceNotFoundException("Personal no existente con este id: " + id));
     }
     //guardar
     public Alimentacion setAlimentacion(Alimentacion alimentacion) {
-        return alimentacionRepository.save(alimentacion);
+        return alimentacionRepo.save(alimentacion);
     }
     //actualizar
-    public Alimentacion update(Alimentacion alimentacion) {
-        if (!alimentacionRepository.existsById(alimentacion.getId())) {
-            throw new ResourceNotFoundException("Alimentacion no existe con id: " + alimentacion.getId());
+    public Alimentacion updateAlimentacion(Alimentacion alimentacion) {
+        if (!alimentacionRepo.existsById(alimentacion.getId())) {
+            throw new ResourceNotFoundException("En alimentacion no existe este id: " + alimentacion.getId());
         }
-        return alimentacionRepository.save(alimentacion);
+        return alimentacionRepo.save(alimentacion);
     }
     //eliminar
     public void deleteIdAlimentacion(int id) {
-        if(!alimentacionRepository.existsById(id)){
-            throw new ResourceNotFoundException("Alimentacion no existe con id: " + id);
+        if(!alimentacionRepo.existsById(id)){
+            throw new ResourceNotFoundException("En alimentacion no existe este id: " + id);
         }
-        alimentacionRepository.deleteById(id);
+        alimentacionRepo.deleteById(id);
     }
     
 
