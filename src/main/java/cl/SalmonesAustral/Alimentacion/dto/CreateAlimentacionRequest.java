@@ -4,9 +4,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
 public record CreateAlimentacionRequest (
-    
-    @Positive(message= "El id de alimentacion debe ser un numero positivo")
-    int idAlimentacion,
 
     @NotBlank(message= "El nombre del tipo de alimentacion no puede estar vacio")
     String tipoAlimentacion,
