@@ -7,8 +7,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebClientConfig {
-    @Value("${url.microservicio.criaderos}")
-    private String criaderosUrl;
+    @Value("${url.microservicio.criadero}")
+    private String criaderoUrl;
 
     @Value("${url.microservicio.jaula}")
     private String jaulaUrl;
@@ -18,8 +18,8 @@ public class WebClientConfig {
         return WebClient.builder();
     }
     @Bean
-    public WebClient criaderosWebClient(WebClient.Builder builder) {
-        return builder.baseUrl(criaderosUrl).build();
+    public WebClient criaderoWebClient(WebClient.Builder builder) {
+        return builder.baseUrl(criaderoUrl).build();
     }
     @Bean
     public WebClient jaulasWebClient(WebClient.Builder builder) {
