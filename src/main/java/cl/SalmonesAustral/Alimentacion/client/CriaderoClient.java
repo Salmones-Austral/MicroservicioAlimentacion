@@ -13,7 +13,7 @@ public class CriaderoClient {
     private static final Logger logger = LoggerFactory.getLogger(CriaderoClient.class);
     private final WebClient webClient;
 
-    public CriaderoClient(@Qualifier("criaderosWebClient") WebClient webClient) {
+    public CriaderoClient(@Qualifier("criaderoWebClient") WebClient webClient) {
         this.webClient = webClient; 
     }
     public List<Object> obtenerCriaderosPorNombre(String nombre) {
