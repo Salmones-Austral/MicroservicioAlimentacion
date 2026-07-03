@@ -100,26 +100,26 @@ public class AlimentacionControllador {
         return ResponseEntity.ok(criaderos);
     }
     //obtener nombre de jaula
-    @GetMapping("/jaulas/{nombre}") // Corregido de {nombres} a {nombre}
-    public ResponseEntity<List<Object>> getNombreJaula(@PathVariable String nombre) {
-        List<Object> jaulas = jaulaClient.obtenerJaulasPorNombre(nombre);
+    @GetMapping("/jaulas/{codigo}") // Corregido de {nombre} a {codigo}
+    public ResponseEntity<List<Object>> getNombreJaula(@PathVariable String codigo) {
+        List<Object> jaulas = jaulaClient.obtenerJaulasPorNombre(codigo);
         return ResponseEntity.ok(jaulas);
     }
     //insertar datos con jaula
-    @PostMapping("/jaulas/{nombre}/alimento")
+    @PostMapping("/jaulas/{codigo}/alimento")
     public ResponseEntity<Map<String, Object>> registrarAlimentoEnJaula(
-        @PathVariable String nombre, 
+        @PathVariable String codigo, 
         @RequestParam Double cantidadAlimento,
         @RequestParam String tipoAlimeno) {
-        List<Object> infoJaula = jaulaClient.obtenerJaulasPorNombre(nombre);
+        List<Object> infoJaula = jaulaClient.obtenerJaulasPorNombre(codigo);
         if (infoJaula == null || infoJaula.isEmpty()) {
             Map<String, Object> error = new HashMap<>();
-            error.put("mensaje", "La jaula '" + nombre + "' no existe.");
+            error.put("mensaje", "La jaula '" + codigo + "' no existe.");
             return ResponseEntity.status(404).body(error);
         }
         Map<String, Object> confirmacionInfo = new HashMap<>();
         confirmacionInfo.put("id", infoJaula.get(0)); 
-        confirmacionInfo.put("nombreBuscado", nombre);
+        confirmacionInfo.put("nombreBuscado", codigo);
         confirmacionInfo.put("cantidadAlimentoAsignada", cantidadAlimento);
         confirmacionInfo.put("tipoAlimentoBrindado", tipoAlimeno);
         return ResponseEntity.ok(confirmacionInfo);

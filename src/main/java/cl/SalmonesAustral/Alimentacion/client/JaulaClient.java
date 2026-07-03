@@ -16,10 +16,10 @@ public class JaulaClient {
     public JaulaClient(@Qualifier("jaulasWebClient") WebClient webClient) {
         this.webClient = webClient; 
     }
-    public List<Object> obtenerJaulasPorNombre(String nombre) {
-        logger.info("Llamando a microservicio jaula para obtener datos por nombre: {}", nombre);
+    public List<Object> obtenerJaulasPorCodigo(String codigo) {
+        logger.info("Llamando a microservicio jaula para obtener datos por codigo: {}", codigo);
         return webClient.get()
-                .uri("/api/v1/jaulas/{nombre}", nombre)
+                .uri("/api/v1/jaulas/{codigo}", codigo)
                 .retrieve()
                 .bodyToFlux(Object.class)
                 .collectList()
