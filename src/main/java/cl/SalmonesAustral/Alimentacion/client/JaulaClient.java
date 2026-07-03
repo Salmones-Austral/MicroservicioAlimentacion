@@ -25,12 +25,13 @@ public class JaulaClient {
                 .collectList()
                 .block();
     }
-    public List<String> obtenerTodosLosCodigos() {
-    return webClient.get()
-            .uri("/api/v1/jaulas/codigos")
-            .retrieve()
-            .bodyToFlux(String.class) // Esperamos texto (los códigos)
-            .collectList()
-            .block();
-}
+    public List<Object> listarJaulas() {
+        logger.info("Llamando a microservicio jaula para obtener todas las jaulas registradas");
+        return webClient.get()
+                .uri("/api/v1/jaulas")
+                .retrieve()
+                .bodyToFlux(Object.class)
+                .collectList()
+                .block();
+            }
 }

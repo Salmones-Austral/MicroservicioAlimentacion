@@ -99,11 +99,11 @@ public class AlimentacionControllador {
         List<Object> criaderos = criaderoClient.obtenerCriaderosPorNombre(nombre);
         return ResponseEntity.ok(criaderos);
     }
-    //obtener nombre de jaula
-    @GetMapping("/jaulas/lista-codigos")
-    public ResponseEntity<List<String>> getListaCodigosJaulas() {
-        List<String> codigos = jaulaClient.obtenerTodosLosCodigos();
-        return ResponseEntity.ok(codigos);
+    //obtener todo de jaula
+    @GetMapping("/jaulas/listar-jaulas")
+    public ResponseEntity<List<Object>> getAllJaulas() {
+        List<Object> todasLasJaulas = jaulaClient.listarJaulas();
+        return ResponseEntity.ok(todasLasJaulas);
     }
     //insertar datos con jaula
     @PostMapping("/jaulas/{codigo}/alimento")
