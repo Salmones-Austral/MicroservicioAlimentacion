@@ -19,7 +19,7 @@ public class JaulaClient {
     public List<Object> obtenerJaulasPorCodigo(String codigo) {
         logger.info("Llamando a microservicio jaula para obtener datos por codigo: {}", codigo);
         return webClient.get()
-                .uri("/api/v1/jaulas/{codigo}", codigo)
+                .uri("/api/v1/jaulas/codigo/{codigo}", codigo)
                 .retrieve()
                 .bodyToFlux(Object.class)
                 .collectList()
