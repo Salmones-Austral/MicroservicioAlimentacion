@@ -19,7 +19,7 @@ public class CriaderoClient {
     public List<Object> obtenerCriaderosPorNombre(String nombre) {
         logger.info("Llamando a microservicio criadero para obtener datos por nombre: {}", nombre);
         return webClient.get()
-                .uri("/{nombre}", nombre) 
+                .uri("/api/v1/criaderos/{nombre}", nombre) 
                 .retrieve()
                 .bodyToFlux(Object.class)
                 .collectList()

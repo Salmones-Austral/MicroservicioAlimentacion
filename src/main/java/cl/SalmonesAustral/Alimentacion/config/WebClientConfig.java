@@ -1,11 +1,17 @@
 package cl.SalmonesAustral.Alimentacion.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebClientConfig {
+    @Value("${url.microservicio.criaderos}")
+    private String criaderosUrl;
+
+    @Value("${url.microservicio.jaula}")
+    private String jaulaUrl;
 
     @Bean
     public WebClient.Builder webClientBuilder() {
@@ -13,11 +19,11 @@ public class WebClientConfig {
     }
     @Bean
     public WebClient criaderosWebClient(WebClient.Builder builder) {
-        return builder.baseUrl("http://localhost:8080/api/v1/criaderos").build();
+        return builder.baseUrl(criaderosUrl).build();
     }
     @Bean
     public WebClient jaulasWebClient(WebClient.Builder builder) {
-        return builder.baseUrl("http://localhost:8081/api/v1/jaulas").build();
+        return builder.baseUrl(jaulaUrl).build();
     }
 
 }
