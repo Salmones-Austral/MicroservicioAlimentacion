@@ -102,7 +102,7 @@ public class AlimentacionControllador {
     //obtener nombre de jaula
     @GetMapping("/jaulas/{codigo}") // Corregido de {nombre} a {codigo}
     public ResponseEntity<List<Object>> getNombreJaula(@PathVariable String codigo) {
-        List<Object> jaulas = jaulaClient.obtenerJaulasPorNombre(codigo);
+        List<Object> jaulas = jaulaClient.obtenerJaulasPorCodigo(codigo);
         return ResponseEntity.ok(jaulas);
     }
     //insertar datos con jaula
@@ -111,7 +111,7 @@ public class AlimentacionControllador {
         @PathVariable String codigo, 
         @RequestParam Double cantidadAlimento,
         @RequestParam String tipoAlimeno) {
-        List<Object> infoJaula = jaulaClient.obtenerJaulasPorNombre(codigo);
+        List<Object> infoJaula = jaulaClient.obtenerJaulasPorCodigo(codigo);
         if (infoJaula == null || infoJaula.isEmpty()) {
             Map<String, Object> error = new HashMap<>();
             error.put("mensaje", "La jaula '" + codigo + "' no existe.");
