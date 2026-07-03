@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
-@RequestMapping("api/v1/Alimentacion")
+@RequestMapping("api/v1/alimentacion")
 public class AlimentacionControllador {
 
     private final AlimentacionService alimentacionService;
