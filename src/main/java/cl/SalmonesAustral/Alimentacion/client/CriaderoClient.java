@@ -16,13 +16,13 @@ public class CriaderoClient {
     public CriaderoClient(@Qualifier("criaderoWebClient") WebClient webClient) {
         this.webClient = webClient; 
     }
-    public List<Object> obtenerCriaderosPorNombre(String nombre) {
-        logger.info("Llamando a microservicio criadero para obtener datos por nombre: {}", nombre);
+    public List<Object> listarCriaderos() {
+        logger.info("Llamando a microservicio criadero para obtener todas las informacion registrada");
         return webClient.get()
-                .uri("/api/v1/criaderos/{nombre}", nombre) 
+                .uri("/api/v1/criaderos") 
                 .retrieve()
                 .bodyToFlux(Object.class)
                 .collectList()
                 .block();
-    }
+            }
 }

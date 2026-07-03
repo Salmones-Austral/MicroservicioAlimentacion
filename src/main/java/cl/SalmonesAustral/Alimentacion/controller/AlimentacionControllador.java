@@ -94,10 +94,11 @@ public class AlimentacionControllador {
     }
    ////////////////////Metodos custom/////////////////////////////
     //obtener nombre de criadero
-    @GetMapping("/criaderos/{nombre}")
-    public ResponseEntity<List<Object>> getNombreCriadero(@PathVariable String nombre) {
-        List<Object> criaderos = criaderoClient.obtenerCriaderosPorNombre(nombre);
-        return ResponseEntity.ok(criaderos);
+    @GetMapping("/criaderos/listar-criaderos")
+    public ResponseEntity<List<Object>> getAllCriaderos() {
+        // Usamos el cliente que inyectaste en el constructor
+        List<Object> todosLosCriaderos = criaderoClient.listarCriaderos();
+        return ResponseEntity.ok(todosLosCriaderos);
     }
     //obtener todo de jaula
     @GetMapping("/jaulas/listar-jaulas")
