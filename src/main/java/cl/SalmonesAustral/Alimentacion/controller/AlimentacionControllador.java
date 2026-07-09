@@ -106,23 +106,23 @@ public class AlimentacionControllador {
         List<Object> todasLasJaulas = jaulaClient.listarJaulas();
         return ResponseEntity.ok(todasLasJaulas);
     }
-    //insertar datos con jaula
-    @PostMapping("/jaulas/{codigo}/alimento")
-    public ResponseEntity<Map<String, Object>> registrarAlimentoEnJaula(
-        @PathVariable String codigo, 
-        @RequestParam Double cantidadAlimento,
-        @RequestParam String tipoAlimeno) {
-        List<Object> infoJaula = jaulaClient.obtenerJaulasPorCodigo(codigo);
-        if (infoJaula == null || infoJaula.isEmpty()) {
-            Map<String, Object> error = new HashMap<>();
-            error.put("mensaje", "La jaula '" + codigo + "' no existe.");
-            return ResponseEntity.status(404).body(error);
-        }
-        Map<String, Object> confirmacionInfo = new HashMap<>();
-        confirmacionInfo.put("id", infoJaula.get(0)); 
-        confirmacionInfo.put("nombreBuscado", codigo);
-        confirmacionInfo.put("cantidadAlimentoAsignada", cantidadAlimento);
-        confirmacionInfo.put("tipoAlimentoBrindado", tipoAlimeno);
-        return ResponseEntity.ok(confirmacionInfo);
-    } 
+
+    //para listar Codigos y estado de las jaulas
+    @GetMapping("/jaulas/listar-estados-habilitacion")
+    public ResponseEntity<List<Map<String, Object>>> obtenerEstadosHabilitacionJaulas() {
+
+        List<Map<String, Object>> estados = jaulaClient.listarEstadosHabilitacion();
+        return ResponseEntity.ok(estados);
+    }
+
+    //Para actualizar el estado por medio del codigo de la jaula
+    @PutMapping("/jaulas/codigo/{codigo}/habilitacion")
+    public ResponseEntity<Map<String, Object>> modificarHabilitacionJaula(
+            @PathVariable String codigo, 
+            @RequestParam Boolean habilitarAlimentacion) {
+
+        Map<String, Object> respuesta = jaulaClient.cambiarEstadoHabilitacion(codigo, habilitarAlimentacion);
+        
+        return ResponseEntity.ok(respuesta);
+    }
 }

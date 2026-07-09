@@ -16,6 +16,7 @@ public class CriaderoClient {
     public CriaderoClient(@Qualifier("criaderoWebClient") WebClient webClient) {
         this.webClient = webClient; 
     }
+    //para pedir datos a MS criadero
     public List<Object> listarCriaderos() {
         logger.info("Llamando a microservicio criadero para obtener todas las informacion registrada");
         return webClient.get()
